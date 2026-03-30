@@ -14,6 +14,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
+app.get("/", (req, res) => {
+  res.send("Ombor API ISHLAYAPTI");
+});
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/skladmaster")
@@ -208,9 +211,6 @@ app.delete("/products/:id", auth, async (req, res) => {
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
-});
-app.get("/", (req, res) => {
-  res.send("Ombor API ISHLAYAPTI");
 });
 
 app.listen(PORT, () => {

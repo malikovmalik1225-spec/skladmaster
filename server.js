@@ -209,10 +209,10 @@ app.delete("/products/:id", auth, async (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
+app.get("/", (req, res) => {
+  res.send("Ombor API ISHLAYAPTI");
+});
 
 app.listen(PORT, () => {
   console.log(`Server ishga tushdi -> ${PORT}`);
-});
-app.get("/", (req, res) => {
-  res.send("Ombor API ISHLAYAPTI");
 });

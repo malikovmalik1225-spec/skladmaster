@@ -14,12 +14,13 @@ const JWT_SECRET = process.env.JWT_SECRET;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
+
 app.get("/", (req, res) => {
   res.send("Ombor API ISHLAYAPTI");
 });
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/skladmaster")
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB ulandi"))
   .catch((err) => console.log("MongoDB xato:", err));
 
